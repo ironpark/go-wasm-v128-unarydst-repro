@@ -1,0 +1,29 @@
+diff --git a/src/cmd/internal/obj/wasm/wasmobj.go b/src/cmd/internal/obj/wasm/wasmobj.go
+index 6be681a5..b599b033 100644
+--- a/src/cmd/internal/obj/wasm/wasmobj.go
++++ b/src/cmd/internal/obj/wasm/wasmobj.go
+@@ -130,7 +130,24 @@ var unaryDst = map[obj.As]bool{
+ 	AI64Store8:    true,
+ 	AI64Store16:   true,
+ 	AI64Store32:   true,
++	AV128Store:    true,
+ 	ACALLNORESUME: true,
++
++	// Lane ops take their lane index as an immediate, which the encoder reads from p.To.
++	AI8x16ExtractLaneS: true,
++	AI8x16ExtractLaneU: true,
++	AI8x16ReplaceLane:  true,
++	AI16x8ExtractLaneS: true,
++	AI16x8ExtractLaneU: true,
++	AI16x8ReplaceLane:  true,
++	AI32x4ExtractLane:  true,
++	AI32x4ReplaceLane:  true,
++	AI64x2ExtractLane:  true,
++	AI64x2ReplaceLane:  true,
++	AF32x4ExtractLane:  true,
++	AF32x4ReplaceLane:  true,
++	AF64x2ExtractLane:  true,
++	AF64x2ReplaceLane:  true,
+ }
+ 
+ var Linkwasm = obj.LinkArch{
